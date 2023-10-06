@@ -1,5 +1,5 @@
 import pandas as pd 
-
+import os
 from azure.storage.blob import BlobServiceClient 
 
  
@@ -19,9 +19,7 @@ def process_data():
  
 
     # Store data in Azure Blob Storage 
-    # Bu3f8DUujWDmOW6Lv6XWoiwTe4b97F5OwIdqK1u1v4KVeik3IztHhunz4tJR7LBgKTcy7DqRuZmb+AStfghZNQ==
-    # DefaultEndpointsProtocol=https;AccountName=aksharaai;AccountKey=Bu3f8DUujWDmOW6Lv6XWoiwTe4b97F5OwIdqK1u1v4KVeik3IztHhunz4tJR7LBgKTcy7DqRuZmb+AStfghZNQ==;EndpointSuffix=core.windows.net
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=aksharaai;AccountKey=Bu3f8DUujWDmOW6Lv6XWoiwTe4b97F5OwIdqK1u1v4KVeik3IztHhunz4tJR7LBgKTcy7DqRuZmb+AStfghZNQ==;EndpointSuffix=core.windows.net" 
+    connection_string = os.environ.get('BLOB_CONNECTION_STRING')
 
     blob_service_client = BlobServiceClient.from_connection_string(connection_string) 
 

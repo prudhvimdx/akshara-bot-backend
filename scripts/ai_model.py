@@ -4,13 +4,12 @@ from sklearn.cluster import KMeans
 
 from azureml.core import Workspace, Dataset, Experiment 
 
- 
+import os
 
 def train_and_upload_model(): 
 
     # Load data from Azure Blob Storage 
-
-    connection_string = "DefaultEndpointsProtocol=https;AccountName=aksharaai;AccountKey=Bu3f8DUujWDmOW6Lv6XWoiwTe4b97F5OwIdqK1u1v4KVeik3IztHhunz4tJR7LBgKTcy7DqRuZmb+AStfghZNQ==;EndpointSuffix=core.windows.net" 
+    connection_string = os.environ.get('BLOB_CONNECTION_STRING')
 
     data = pd.read_csv('./data/student_performance/data.csv') 
 
